@@ -3,7 +3,9 @@ module DeviseOtpAuthenticatable
     module Helpers
       def authenticate_scope!
         send(:"authenticate_#{resource_name}!", force: true)
-        self.resource = send("current_#{resource_name}")
+        resource = send("current_#{resource_name}")
+        resource = resource.devise_scope if resource.respond_to?(:devise_scope)
+        self.resource = resource
       end
 
       #

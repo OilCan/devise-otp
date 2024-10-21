@@ -36,7 +36,7 @@ module DeviseOtp
             otp_set_flash_message :success, :used_recovery, :sequence => resource.otp_recovery_counter 
           end
 
-          respond_with resource, location: after_sign_in_path_for(resource)
+          respond_with resource, location: stored_location_for(resource) || after_sign_in_path_for(resource)
         else
           kind = (@token.blank? ? :token_blank : :token_invalid)
           otp_set_flash_message :alert, kind, :now => true

@@ -13,7 +13,7 @@ Some of the compatible token devices are:
 * [Google Authenticator](https://code.google.com/p/google-authenticator/)
 * [FreeOTP](https://fedorahosted.org/freeotp/)
 
-Device OTP was recently updated to work with Rails 7 and Turbo.
+Devise OTP was recently updated to work with Rails 7+ and Turbo.
 
 ## Sponsor
 
@@ -58,10 +58,13 @@ Don't forget to migrate:
 
     rake db:migrate
 
-Add the gem's JavaScript to you `application.js`:
+### Default CSS
 
-    //= require devise-otp
+To use the default CSS for devise-otp, just require the devise-otp.css file as usual in your application.css file (or equivalent):
 
+    *= require devise-otp
+
+It might be even easier to just copy the styles to your project.
 
 ### Custom views
 
@@ -77,9 +80,7 @@ The install generator also installs an english copy of a Devise OTP i18n file. T
 
 ### QR codes
 
-By default, Devise OTP assumes that you use [Sprockets](https://github.com/rails/sprockets) to render assets and so will use the ([qrcode.js](/app/assets/javascripts/qrcode.js)) embeded library to render the QR code.
-
-If you need something more, have a look at [QR codes](/docs/QR_CODES.md) documentation file.
+Devise OTP generates QR Codes directly as SVG's via the [rqrcode](https://github.com/whomwah/rqrcode), so there are no JavaScript (or Sprockets) dependencies.
 
 ## Configuration
 
@@ -102,7 +103,7 @@ Enforcing mandatory OTP requires adding the ensure\_mandatory\_{scope}\_otp! met
 
 ## Authors
 
-The project was originally started by Lele Forzani by forking [devise_google_authenticator](https://github.com/AsteriskLabs/devise_google_authenticator) and still contains some devise_google_authenticator code. It's now maintained by [Josef Strzibny](https://github.com/strzibny/).
+The project was originally started by Lele Forzani by forking [devise_google_authenticator](https://github.com/AsteriskLabs/devise_google_authenticator) and still contains some devise_google_authenticator code. It's now maintained by [Josef Strzibny](https://github.com/strzibny/) and [Laney Stroup](https://github.com/strouptl).
 
 Contributions are welcome!
 

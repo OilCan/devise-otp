@@ -40,7 +40,7 @@ module DeviseOtp
         else
           kind = (@token.blank? ? :token_blank : :token_invalid)
           otp_set_flash_message :alert, kind, :now => true
-          render :show
+          render(:show, status: :unprocessable_entity)
         end
       end
 
